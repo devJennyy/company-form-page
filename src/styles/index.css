@@ -6,8 +6,8 @@
 @theme {
   --tw-color-brand: #367AFF;
   --tw-color-main: #232323;
-  --tw-color-secondary: #232323;
-  --tw-color-primary-fill: #0A0F23;
+  --tw-color-primaryFill: #0A0F23;
+  --tw-color-offWhite: #F5F5F9;
   --tw-breakpoint-sm: 640px;
   --tw-breakpoint-md: 768px;
   --tw-breakpoint-lg: 1024px;
