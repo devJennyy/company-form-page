@@ -96,16 +96,44 @@ const Hero = () => {
 
   return (
     <div className="w-full flex flex-col gap-16 !mt-4">
-      <div className="w-full flex justify-between items-start gap-5">
+      <div className="w-full flex flex-col xl:flex-row justify-between items-start gap-10">
+        <div className="xl:hidden w-full flex flex-col justify-center items-center">
+          <p className="text-sm font-bold tracking-wide uppercase">
+            LOREM: <br />
+            Lorem ipsum dolor sit amet
+          </p>
+          <p className="sm:text-[42px] text-[36px] sm:leading-12 leading-10 py-3 font-canela">
+            Lorem ipsum dolor,
+            <br />
+            consectetur <br className="md:hidden" />
+            <span className="text-brand">adipiscing AI</span>
+          </p>
+
+          <div className="flex items-center gap-3 py-3">
+            <img src="/logo/logo.svg" alt="Logo" className="w-6" />
+
+            <div className="flex items-center text-sunset gap-1">
+              {stars?.map((star, index) =>
+                star === "half" ? (
+                  <IoStarHalf key={index} size={20} />
+                ) : (
+                  <IoStar key={index} size={20} />
+                )
+              )}
+            </div>
+
+            <p className="font-semibold leading-4 !mt-1">4.5</p>
+          </div>
+        </div>
         {/* Input Fields */}
-        <div className="w-full max-w-[520px] flex flex-col gap-7 p-8 rounded-3xl shadow-[0_4px_15px_rgba(0,0,0,0.1)]">
-          <p className="text-[2rem]">Download the guide</p>
+        <div className="w-full xl:max-w-[520px] flex flex-col gap-7 py-8 md:px-8 px-5 rounded-3xl shadow-[0_4px_15px_rgba(0,0,0,0.1)]">
+          <p className="md:text-[2rem] text-2xl">Download the guide</p>
 
           <div className="flex flex-col gap-5">
             {inputFields.map((item, index) => (
               <div key={index}>
                 {item.groupInput ? (
-                  <div className="flex gap-5">
+                  <div className="flex md:flex-row flex-col gap-5">
                     {item.groupInput.map((groupItem, idx) => (
                       <div
                         key={idx}
@@ -163,31 +191,33 @@ const Hero = () => {
         </div>
 
         {/* Benefits */}
-        <div className="w-full max-w-[490px] flex flex-col text-left gap-4">
-          <p className="text-sm font-semibold tracking-wide uppercase">
-            LOREM: <br />
-            Lorem ipsum dolor sit amet
-          </p>
-          <p className="text-[34px] leading-12">
-            Lorem ipsum dolor,
-            <br />
-            consectetur <span className="text-brand">adipiscing AI</span>
-          </p>
+        <div className="w-full xl:max-w-[490px] flex flex-col text-left gap-4">
+          <div className="xl:block hidden">
+            <p className="text-sm font-semibold tracking-wide uppercase">
+              LOREM: <br />
+              Lorem ipsum dolor sit amet
+            </p>
+            <p className="text-[42px] leading-11 font-canela pt-4 pb-5">
+              Lorem ipsum dolor,
+              <br />
+              consectetur <span className="text-brand">generative AI</span>
+            </p>
 
-          <div className="flex items-center gap-3 py-3">
-            <img src="/logo/logo.svg" alt="Logo" className="w-6" />
+            <div className="flex items-center gap-3 py-3">
+              <img src="/logo/logo.svg" alt="Logo" className="w-6" />
 
-            <div className="flex items-center text-sunset gap-1">
-              {stars?.map((star, index) =>
-                star === "half" ? (
-                  <IoStarHalf key={index} size={20} />
-                ) : (
-                  <IoStar key={index} size={20} />
-                )
-              )}
+              <div className="flex items-center text-sunset gap-1">
+                {stars?.map((star, index) =>
+                  star === "half" ? (
+                    <IoStarHalf key={index} size={20} />
+                  ) : (
+                    <IoStar key={index} size={20} />
+                  )
+                )}
+              </div>
+
+              <p className="font-semibold leading-4 !mt-1">4.5</p>
             </div>
-
-            <p className="font-semibold leading-4 !mt-1">4.5</p>
           </div>
 
           <div className="flex flex-col gap-5">
@@ -211,7 +241,7 @@ const Hero = () => {
       <LogoMarquee />
 
       {/* Additional Benefits */}
-      <div className="w-full flex justify-between">
+      <div className="w-full flex flex-col xl:flex-row justify-between">
         <div className="w-full max-w-[540px] flex flex-col text-start gap-5">
           {additionalBenefits?.map((item, index) => (
             <div key={index} className="flex items-start gap-4">

@@ -5,7 +5,7 @@ const DownloadApp = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-35% 0px" });
   return (
-    <div className="w-full flex justify-center items-center">
+    <div className="w-full xl:flex justify-center items-center hidden">
       <div ref={ref} className="relative w-[400px] h-[400px] overflow-hidden">
         <div className="absolute right-0 top-0 w-1/2 h-full bg-brand rounded-r-full z-0"></div>
 
