@@ -3,9 +3,7 @@ import SharedButton from "./SharedButton";
 import { inputFields } from "@/constants/FormFields";
 
 const Form = () => {
-  
-
-  const [firstName, setFirstName] = useState("Jenny");
+  const [formData, setFormData] = useState<Record<string, string>>({});
   const firstNameRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -13,6 +11,14 @@ const Form = () => {
       firstNameRef.current.focus();
     }
   }, []);
+
+  const handleChange = (label: string, value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [label]: value,
+    }));
+  };
+
   return (
     <div className="w-full xl:max-w-[520px] flex flex-col gap-7 xl:py-8 py-10 md:px-8 px-5 rounded-3xl shadow-[0_4px_15px_rgba(0,0,0,0.1)]">
       <p className="md:text-[2rem] text-2xl">Download the guide</p>
@@ -32,11 +38,9 @@ const Form = () => {
                         groupItem.label === "First name" ? firstNameRef : null
                       }
                       placeholder={groupItem.placeholder}
-                      value={groupItem.label === "First name" ? firstName : ""}
+                      value={formData[groupItem.label] || ""}
                       onChange={(e) =>
-                        groupItem.label === "First name"
-                          ? setFirstName(e.target.value)
-                          : null
+                        handleChange(groupItem.label, e.target.value)
                       }
                       className="w-full h-14 pl-4 border border-offWhite rounded-lg outline-none bg-offWhite focus:bg-transparent focus:border-[#5551FF] focus:placeholder:text-white transition-default"
                     />
@@ -50,6 +54,8 @@ const Form = () => {
                 </div>
                 <input
                   placeholder={item.placeholder}
+                  value={formData[item.label] || ""}
+                  onChange={(e) => handleChange(item.label, e.target.value)}
                   className="w-full h-14 pl-4 border border-offWhite rounded-lg outline-none bg-offWhite focus:bg-transparent focus:border-[#5551FF] focus:placeholder:text-white transition-default"
                 />
               </div>
